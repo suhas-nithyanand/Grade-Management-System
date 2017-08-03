@@ -17,13 +17,14 @@
         vm.signupErrorMessage = null;
 
         vm.signup = signup;
+        vm.role = 1;
+        // if (vm.teacher == true){
+        //     vm.role = 1;
+        // }
+        // else{
+        //     vm.role = 2;
+        // }
 
-        if (vm.teacher == true){
-            vm.role = 1;
-        }
-        else{
-            vm.role = 2;
-        }
 
         function signup() {
             vm.signupSuccess = false;
