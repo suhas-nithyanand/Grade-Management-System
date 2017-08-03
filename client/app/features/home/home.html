@@ -1,0 +1,45 @@
+<div class="jumbotron text-center">
+    <h2>Welcome to the students records portal!</h2>
+    <p> Please check your grades by entering your <strong>username</strong>.</p>
+        <div class="alert alert-danger" ng-hide="gc.gradesErrorFlag" role="alert">{{ gc.gErrorMessage }}</div>
+        <div class="alert alert-success" ng-hide="gc.showUserInfo" role="alert">{{ gc.message }}</div>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">View Students Grades</a></li>
+    </ul>
+
+<div class="row" style="margin-top: 20px;">
+<div class="col-lg-6">
+
+    <form>
+        <div class="input-group">
+            <span class="input-group-btn">
+        <button type="submit" class="btn btn-danger" ng-click="gc.getStudentGradesByUsername()" type="button"> Browse Grades</button>
+      </span>
+            <input type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+     class="form-control" ng-model="gc.username" placeholder="Enter students username" required autofocus>
+        </div>
+    </form>
+
+    <div ng-hide="gc.showUserInfo" style="margin-top: 20px;">
+<strong> Hello </strong> {{gc.studentInfo.firstName}} {{gc.studentInfo.lastName}}
+</div>
+
+<div ng-hide="gc.showData" style="margin-top: 20px;">
+<table class="table">
+    <tr>
+        <td> <strong>Course Name </strong>
+        </td>
+        <td><strong> Grade </strong>
+        </td>
+    </tr>
+    <tr ng-repeat="item in gc.grades">
+        <td>{{item.courseName}}
+        </td>
+        <td>{{item.grade}}
+        </td>
+    </tr>
+</table>
+</div>
+</div>
+</div>
+</div>

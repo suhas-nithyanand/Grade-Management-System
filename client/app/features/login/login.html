@@ -1,0 +1,20 @@
+
+<div class="col-lg-6">
+        <div class="jumbotron text-left">
+    <h2 class="form-auth-heading">Login</h2>
+
+    <div class="alert alert-danger" ng-if="lc.loginError" role="alert">{{ lc.loginErrorMessage }}</div>
+
+    <form>
+        <div class="form-group">
+            <label for="inputUsername">Email address</label>
+              <input type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" class="form-control" ng-model="lc.username" id="inputUsername" placeholder="Email" required autofocus>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" ng-model="lc.password" id="inputPassword" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-danger" ng-click="lc.login()">Login</button>
+    </form>
+        </div>
+</div>

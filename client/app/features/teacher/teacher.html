@@ -1,0 +1,182 @@
+
+<div class="container"><h2>Welcome to Student Records Portal!</h2></div>
+
+<div class="container" style = "margin-left: -15px;">	
+<ul class="nav nav-tabs">
+			<li class="active"><a data-target="#browseGrades" data-toggle="tab">Browse Student Grades</a></li>
+			<li><a  data-target="#addgrades" data-toggle="tab">Add Student Grades</a></li>
+			<li><a  data-target="#addStudents" data-toggle="tab">Add Students</a> </li>
+			<li><a  data-target="#addCourses" data-toggle="tab">Add Courses</a> </li>
+		</ul>
+<div class="tab-content ">
+	<!--tab1-->
+<div class="tab-pane active" id="browseGrades"> 
+          <div class="jumbotron text-left">
+    <p> Check students grades by entering the <strong>username</strong>.</p>
+     <div class="alert alert-success" ng-hide="tc.showUserInfo" role="alert">{{ tc.message }}</div>
+    <div class="alert alert-danger" ng-hide="tc.gradesErrorFlag" role="alert">{{ tc.gErrorMessage }}</div>
+<div class="row" style="margin-top: 20px;">
+<div class="col-lg-6">
+
+    <form>
+        <div class="input-group">
+            <span class="input-group-btn">
+        <button type="submit" class="btn btn-danger" ng-click="tc.getStudentGradesByUsername()" type="button"> Browse Grades</button>
+      </span>
+              <input type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" class="form-control" ng-model="tc.username" placeholder="Enter students username" required autofocus>
+        </div>
+    </form>
+<div ng-hide="tc.showData" style="margin-top: 20px;">
+<table class="table">
+    <tr>
+        <td> <strong>Course Name </strong>
+        </td>
+        <td><strong> Grade </strong>
+        </td>
+    </tr>
+    <tr ng-repeat="item in tc.grades">
+        <td>{{item.courseName}}
+        </td>
+        <td>{{item.grade}}
+        </td>
+    </tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--tab1-->
+<!--tab2-->
+<div class="tab-pane" id="addgrades">
+<div class="jumbotron text-left">
+<p> Add student's course <strong>grade</strong> to the student records portal.</p>
+<div class="alert alert-success" ng-hide="tc.addGradeFlag" role="alert">The student was successfully added!</div>
+
+<div class="row" style="margin-top: 20px;">
+<div class="col-lg-6">
+<form class="form-horizontal">
+	<div class="form-group">
+		<label for="inputUsername" class="col-sm-2 control-label">Username</label>
+		<div class="col-sm-10">
+				  <input type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" id="inputUsername" ng-model="tc.username" class="form-control" id="email" placeholder="Email"required>
+		</div>
+</div>
+
+<div class="form-group">
+		<label for="inputUsername" class="col-sm-2 control-label">Courses</label>
+		<div class="col-sm-10">
+			<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    {{tc.showCourse}}
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		<li ng-repeat="item in tc.courses">
+          <a ng-click="tc.selectCourse(item.courseName)">{{item.courseName}}</a> 
+        </li>
+  </ul>
+</div>
+		</div>
+</div>
+
+<div class="form-group">
+		<label for="inputUsername" class="col-sm-2 control-label">Grades</label>
+		<div class="col-sm-10">
+			<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    {{tc.showGrade}}
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		<li ng-repeat="item in tc.grades">
+          <a ng-click="tc.selectGrade(item)">{{item}}</a> 
+        </li>
+  </ul>
+</div>
+		</div>
+</div>
+
+
+		
+
+<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-danger" ng-click="tc.addGrade()"> Add Grade</button>
+		</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<!--tab2-->
+<!--tab3-->
+<div class="tab-pane" id="addStudents">
+	<div class="jumbotron text-left">
+        <p> Add a <strong>student</strong> to the student records portal.</p>
+<div class="alert alert-success" ng-hide="tc.addStudentFlag" role="alert">The student was successfully added!</div>
+
+<div class="row" style="margin-top: 20px;">
+<div class="col-lg-6">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="inputFname" class="col-sm-2 control-label">First Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="tc.fname" id="fname" name="fname" placeholder="First Name" required autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputLname" class="col-sm-2 control-label">Last Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="tc.lname" id="lname" name="lname" placeholder="Last Name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputUsername" class="col-sm-2 control-label">Username</label>
+            <div class="col-sm-10">
+                 <input type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" id="inputUsername" ng-model="tc.username" class="form-control" id="email" placeholder="Email">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-danger" ng-click="tc.addStudent()"> Register</button>
+            </div>
+        </div>
+    </form>
+
+	<div ng-hide="tc.showUserInfo" style="margin-top: 20px;">
+<strong> Hello </strong> {{tc.studentInfo.firstName}} {{tc.studentInfo.lastName}}
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<!--tab3-->
+<!--tab4-->
+<div class="tab-pane" id="addCourses">
+		<div class="jumbotron text-left">
+            <p> Add new <strong>courses</strong> to the student records portal.</p>
+<div class="alert alert-success" ng-hide="tc.addCourseFlag" role="alert">The course was successfully added!</div>
+<div class="row" style="margin-top: 20px;">
+<div class="col-lg-6">
+	<form>
+		<div class="input-group">
+			<span class="input-group-btn">
+        <button type="submit" class="btn btn-danger" ng-click="tc.addCourse()" type="button"> Add Course</button>
+      </span>
+			<input type="text" class="form-control" ng-model="tc.coursename" placeholder="Enter the course name">
+		</div>
+	</form>
+</div>
+</div>
+</div>
+</div>
+<!--tab4-->
+</div>
+  </div>
+
+<hr></hr>
